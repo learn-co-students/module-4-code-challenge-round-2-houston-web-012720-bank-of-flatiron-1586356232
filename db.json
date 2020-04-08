@@ -83,6 +83,34 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-07",
+      "description": "Mickey Dees",
+      "category": "Food",
+      "amount": "11.20",
+      "id": 13
+    },
+    {
+      "date": "2020-04-07",
+      "description": "Mafia",
+      "category": "offer i couldn't refuse",
+      "amount": "-30000",
+      "id": 14
+    },
+    {
+      "date": "2020-04-07",
+      "description": "Mafia",
+      "category": "offer i couldn't refuse",
+      "amount": "-30000",
+      "id": 15
+    },
+    {
+      "date": "2020-03-17",
+      "description": "I forgot",
+      "category": "Misc",
+      "amount": "-600.98",
+      "id": 16
     }
   ]
 }
