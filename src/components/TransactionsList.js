@@ -1,8 +1,13 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-const TransactionsList = () => {
+const TransactionsList = (props) => {
+  console.log(props.transactions)
+  // const getTransaction = () => { 
+  //   props.transactions.map(t => {return <Transaction transaction={t}/>}) 
+  // }
   return (
+    
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
@@ -19,7 +24,8 @@ const TransactionsList = () => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {/* render Transactions here */}
+        {/* {getTransaction()} */}
+        {props.transactions ? props.transactions.map(t => {return <Transaction transaction={t}/>}) : null}
       </tbody>
     </table>
   );
