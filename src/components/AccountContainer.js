@@ -9,7 +9,8 @@ class AccountContainer extends Component {
     super()
     this.state = {
       transactions: [],
-      query: ""
+      query: "",
+      sortBy: "desc"
     }
   }
 
@@ -17,7 +18,9 @@ class AccountContainer extends Component {
     fetch("http://localhost:6001/transactions")
       .then(res => res.json())
       .then(transactions => {
-        this.setState({transactions})
+        this.setState({transactions}, () => {
+          this.sortTransactions(this.state.sortBy)
+        })
       })
   }
 
@@ -36,12 +39,40 @@ class AccountContainer extends Component {
       .then(res => res.json())
       .then(transaction => {
         console.log("created transaction!")
-        this.setState({transactions: [...this.state.transactions, transaction]})
+        this.setState({transactions: [...this.state.transactions, transaction]}, () => {
+          this.sortTransactions(this.state.sortBy)
+        })
       })
   }
 
   onSearch = (e) => {
     this.setState({query: e.target.value})
+  }
+
+  onDelete = (transaction) => {
+    fetch("http://localhost:6001/transactions/" + transaction.id, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(deleted => {
+        console.log("Transaction deleted!")
+        this.setState({transactions: [...this.state.transactions.filter(t => t.id !== transaction.id)]})
+      })
+  }
+
+  onSort = (e) => {
+    this.setState({
+      sortBy: e.target.value
+    }, () => {this.sortTransactions(this.state.sortBy)})
+  }
+
+  sortTransactions = (sortby) => {
+    console.log(sortby)
+    if (sortby == "desc") {
+      this.setState({transactions: [...this.state.transactions.sort((a, b) => a.description.localeCompare(b.description))]})
+    } else if (sortby == "category") {
+      this.setState({transactions: [...this.state.transactions.sort((a, b) => a.category.localeCompare(b.category))]})
+    }
   }
 
   componentDidMount() {
@@ -51,9 +82,9 @@ class AccountContainer extends Component {
   render() {
     return (
       <div>
-        <Search handleSearch={this.onSearch}/>
+        <Search handleSort={this.onSort} handleSearch={this.onSearch}/>
         <AddTransactionForm handleCreate={this.createTransaction}/>
-        <TransactionsList query={this.state.query} transactions={this.state.transactions}/>
+        <TransactionsList sortBy={this.state.sortBy} query={this.state.query} transactions={this.state.transactions} handleDelete={this.onDelete}/>
       </div>
     );
   }

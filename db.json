@@ -85,10 +85,10 @@
       "amount": -975
     },
     {
-      "date": "2020-01-22",
-      "description": "Testing",
-      "category": "Misc",
-      "amount": "20.50",
+      "date": "1111-11-11",
+      "description": "AAA",
+      "category": "ZZZ",
+      "amount": "12",
       "id": 13
     }
   ]

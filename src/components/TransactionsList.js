@@ -23,8 +23,8 @@ const TransactionsList = (props) => {
           props.query
             ? props.transactions
               .filter(t => t.description.toLowerCase().includes(props.query.toLowerCase()))
-              .map(t => <Transaction transaction={t} key={t.id}/>)
-            : props.transactions.map(t => <Transaction transaction={t} key={t.id}/>)
+              .map(t => <Transaction transaction={t} key={t.id} handleDelete={() => props.handleDelete(t)}/>)
+            : props.transactions.map(t => <Transaction transaction={t} key={t.id} handleDelete={() => props.handleDelete(t)}/>)
         }
       </tbody>
     </table>
