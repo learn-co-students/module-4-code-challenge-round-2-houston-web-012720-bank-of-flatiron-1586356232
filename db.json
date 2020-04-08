@@ -97,6 +97,27 @@
       "category": "Income",
       "amount": "30000000",
       "id": 15
+    },
+    {
+      "date": "2020-04-08",
+      "description": "Mickey Dees",
+      "category": "Food",
+      "amount": "-8.10",
+      "id": 16
+    },
+    {
+      "date": "2020-04-08",
+      "description": "Mickey Dees",
+      "category": "Food",
+      "amount": "-8.10",
+      "id": 17
+    },
+    {
+      "date": "2020-04-10",
+      "description": "Mickey Dees",
+      "category": "Food",
+      "amount": "-3.50",
+      "id": 18
     }
   ]
 }

@@ -42,6 +42,7 @@ class AccountContainer extends Component {
     // debugger
     e.preventDefault()
     // add "validations" if you have time
+    if (!e.target[0].value || !e.target[1].value || !e.target[2].value || !e.target[3].value) return(alert('All Fields Required!'))
     this.setState({
       transactionToSubmit: {
         "date": e.target[0].value,
