@@ -62,6 +62,14 @@ class AccountContainer extends Component {
     })
   }
 
+  deleteTransaction = (transaction) => {
+    // debugger
+    fetch(`http://localhost:6001/transactions/${transaction.id}`, {
+      method: 'DELETE'
+    })
+    .then(this.getTransactions())
+  }
+
   searchTransactions = (searchTerm) => {
     const matches = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(searchTerm.toLowerCase()))
     // console.log(matches)
@@ -70,15 +78,34 @@ class AccountContainer extends Component {
     })
   }
 
+  sortByCategory = () => {
+    // debugger
+    const sortedTransactions = [...this.state.displayTransactions].sort((a,b) => a.category.localeCompare(b.category))
+    this.setState({
+      displayTransactions: sortedTransactions
+    })
+  }
+
+  sortByDescription = () => {
+    // debugger
+    const sortedTransactions = [...this.state.displayTransactions].sort((a,b) => a.description.localeCompare(b.description))
+    this.setState({
+      displayTransactions: sortedTransactions
+    })
+  }
+
   render() {
     return (
       <div>
         <Search
-          searchTransactions={this.searchTransactions} />
+          searchTransactions={this.searchTransactions}
+          sortByCategory={this.sortByCategory}
+          sortByDescription={this.sortByDescription} />
         <AddTransactionForm
           addTransaction={this.addTransaction} />
         <TransactionsList
-          transactions={this.state.displayTransactions} />
+          transactions={this.state.displayTransactions}
+          deleteTransaction={this.deleteTransaction} />
       </div>
     );
   }

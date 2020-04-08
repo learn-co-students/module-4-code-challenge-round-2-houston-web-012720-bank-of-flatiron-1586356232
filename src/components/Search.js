@@ -3,6 +3,12 @@ import React from "react";
 const Search = (props) => {
   return (
     <div className="ui large fluid icon input">
+      <button onClick={()=>props.sortByCategory()}>
+        Sort By Category
+      </button>
+      <button onClick={()=>props.sortByDescription()}>
+        Sort By Description
+      </button>
       <input
         type="text"
         placeholder={"Search your Recent Transactions"}

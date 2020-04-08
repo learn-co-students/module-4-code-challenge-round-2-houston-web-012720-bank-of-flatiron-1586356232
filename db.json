@@ -71,13 +71,6 @@
       "amount": -24
     },
     {
-      "id": 11,
-      "date": "2019-12-16",
-      "description": "MTA Vending Machine: MetroCard",
-      "category": "Transportation",
-      "amount": -116.39
-    },
-    {
       "id": 12,
       "date": "2019-12-17",
       "description": "Venmo, Pay Roommate for Rent",
@@ -99,18 +92,11 @@
       "id": 14
     },
     {
-      "date": "2020-04-07",
-      "description": "Mafia",
-      "category": "offer i couldn't refuse",
-      "amount": "-30000",
+      "date": "2020-05-12",
+      "description": "Paycheck From the Future",
+      "category": "Income",
+      "amount": "30000000",
       "id": 15
-    },
-    {
-      "date": "2020-03-17",
-      "description": "I forgot",
-      "category": "Misc",
-      "amount": "-600.98",
-      "id": 16
     }
   ]
 }
