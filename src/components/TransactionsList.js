@@ -20,6 +20,9 @@ const TransactionsList = () => {
           </th>
         </tr>
         {/* render Transactions here */}
+        {/* <div>*/}
+        {/* this.props.trns.map(trn => <Transaction trn={trn}/>*/}
+        {/* </div>*/}
       </tbody>
     </table>
   );
