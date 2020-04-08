@@ -85,25 +85,11 @@
       "amount": -975
     },
     {
-      "date": "2020-04-17",
-      "description": "asdfadsfadsfadsafsd",
-      "category": "adfasdfadfadfasdfasdfasd",
-      "amount": "0.02",
-      "id": 14
-    },
-    {
-      "date": "2020-04-16",
+      "date": "2020-04-23",
       "description": "gummy bears",
-      "category": "food",
-      "amount": "0.07",
-      "id": 15
-    },
-    {
-      "date": "2020-04-24",
-      "description": "sandwich",
-      "category": "food",
-      "amount": "3.00",
-      "id": 16
+      "category": "snacks",
+      "amount": "200",
+      "id": 13
     }
   ]
 }

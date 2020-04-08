@@ -19,7 +19,8 @@ class AccountContainer extends Component {
     .then(transData => {
       this.setState({
         trans: transData,
-        transDisplay: transData
+        transDisplay: transData,
+        sorted: false
       })
     })
   }
@@ -63,12 +64,47 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSort = (event) => {
+    let sorted 
+    let unsortedList = this.state.transDisplay.slice()
+    switch(event.target.value){
+      case "Description":
+        sorted = unsortedList.sort( (transA, transB) => transA.description.toLowerCase() > transB.description.toLowerCase() ? 1 : -1)
+        break 
+      case "Category":
+        sorted = unsortedList.sort( (transA, transB) => transA.category.toLowerCase() > transB.category.toLowerCase() ? 1 : -1)
+        break 
+      case "None":
+        // this wont have the filter applied. it needs to be transDisplay
+        // maybe have a sorted state. if true than pass transSorted instead of transDispay
+        sorted = this.state.trans
+    }
+    this.setState({
+      transDisplay: sorted
+    })
+  }
+
+  handleDelete = (event, trans) => {
+    fetch("http://localhost:6001/transactions" + `/${trans.id}`, {
+    method: "DELETE", 
+    })
+    .then(resp => resp.json())
+    .then(deletedTrans => {
+      let updatedList = this.state.trans.filter( t => t.id !== trans.id )
+      this.setState({
+        trans: updatedList,
+        transDisplay: updatedList
+      })
+    })
+  }
+
+
   render() {
     return (
       <div>
-        <Search handleFilter={this.handleFilter}/>
+        <Search handleFilter={this.handleFilter} handleSort={this.handleSort}/>
         <AddTransactionForm addTrans={this.addTrans}/>
-        <TransactionsList trans={this.state.transDisplay} />
+        <TransactionsList trans={this.state.transDisplay} handleDelete={this.handleDelete} />
       </div>
     );
   }
